@@ -8,6 +8,7 @@
 #include <vector>
 #include <cstdint>
 #include <string>
+#include <algorithm>
 using namespace std;
 
 class Graph { // A
@@ -31,7 +32,8 @@ int OverLap(const string&, const string&); //K
 */
 vector<int> Assignment(const Graph& g); //A
 
-vector<Graph> FullCoverage(vector<int>); //K
+//Функция для вычисления покрытия циклами минимальной полной длины
+vector<vector<int>> FullCoverage(vector<int>); //K
 
 string Prefix(string, int); //A
 
