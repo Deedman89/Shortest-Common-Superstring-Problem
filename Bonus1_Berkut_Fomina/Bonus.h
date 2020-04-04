@@ -13,8 +13,8 @@ using namespace std;
 class Graph { // A
 public:
     Graph(const vector<string>&); // Конструктор, создающий полный граф по данному набору строк
-    void AddEdge(int, int, int);
-    vector<int> GetEdgesFrom(int) const;
+    void AddEdge(int, int, int); // Добавление ребра из вершины from в вершину to с весом length
+    vector<int> GetEdgesFrom(int) const; // Получение списка ребер, исходящих из вершины v
 private:
     vector<vector<int>> matrix;
 };
