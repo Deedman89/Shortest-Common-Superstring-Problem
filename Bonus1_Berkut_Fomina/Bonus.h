@@ -17,10 +17,11 @@ public:
     vector<int> GetEdgesFrom(int) const; // Получение списка ребер, исходящих из вершины v
 private:
     vector<vector<int>> matrix;
+    int size; // число вершин графа
 };
 
-int OverLap(const string&, const string&); //K
 // Функция, считающая длину максимальной одинаковой подстроки данных на вход строк
+int OverLap(const string&, const string&); //K
 
 vector<int> Assignment(); //A
 
