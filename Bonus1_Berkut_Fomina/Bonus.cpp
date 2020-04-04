@@ -3,7 +3,7 @@
 #include <string>
 
 using namespace std;
-максима
+
 int Overlap(const string& s1, const string& s2)
 {
     int overlap = 0;
