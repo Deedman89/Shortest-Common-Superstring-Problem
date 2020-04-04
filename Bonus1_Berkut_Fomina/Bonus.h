@@ -12,7 +12,7 @@ using namespace std;
 
 class Graph { // A
 public:
-    Graph(vector<string>);
+    Graph(const vector<string>&);
     void AddEdge(int, int, int);
     vector<int> GetEdgesFrom(int) const;
 };
