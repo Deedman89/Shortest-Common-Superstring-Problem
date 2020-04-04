@@ -3,14 +3,14 @@
 #include <string>
 
 using namespace std;
-
+максима
 int Overlap(const string& s1, const string& s2)
 {
     int overlap = 0;
     int j = 0;
     int s1_size = s1.size() - 1;
     int s2_size = s2.size();
-    for (int i = s1_size; i > -1; i--)
+    for (int i = s1_size; i > -1; i--)  //Считаем максимальню длину суффикса s1 совпадающего с префиксом s2
     {
         j++;
         for (j; j < s2_size; j++)
