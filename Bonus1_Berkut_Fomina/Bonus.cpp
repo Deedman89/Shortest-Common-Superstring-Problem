@@ -71,3 +71,44 @@ private:
     int size; // размер матрицы
 };
 
+/*
+* Функция, вычисляющая полное назначение максимального
+* веса жажным методом. Время - O(k*k*log(k))
+*/
+vector<int> Assignment(const Graph& g){
+    vector<vector<int>> a = g.GetMatrix(); // Копия нашей матрицы смежности
+    vector<int> res; // Массив для записи результата
+    /* res[i] = j означает выбранное ребро из i в j */
+    int n = g.GetSize();
+    res.resize(n);
+    vector<vector<bool>> allow;
+    allow.resize(n);
+    for (auto i : allow) i.assign(n, true); // Заполнили матрицу достуных клеток
+    while (true)
+    {
+        int max = -1, maxi = -1, maxj = -1;
+        for (int i = 0; i < n; i++)
+        {
+            for (int j = 0; j < n; j++)
+            {
+                if (allow[i][j]) continue;
+                if (a[i][j] > max)
+                {
+                    max = a[i][j];
+                    maxi = i; maxj = j;
+                }
+            }
+        }
+
+        if (max == -1) break;
+
+        res[maxi] = maxj;
+
+        for (int i = 0; i < n; i++)
+        {
+            allow[maxi][i] = true;
+            allow[i][maxj] = true;
+        }
+    }
+    return res;
+};
