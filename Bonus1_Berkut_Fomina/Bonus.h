@@ -20,6 +20,7 @@ private:
 };
 
 int OverLap(const string&, const string&); //K
+// Функция, считающая длину максимальной одинаковой подстроки данных на вход строк
 
 vector<int> Assignment(); //A
 
