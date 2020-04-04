@@ -19,7 +19,7 @@ private:
     vector<vector<int>> matrix;
 };
 
-int OverLap(string, string); //K
+int OverLap(const string&, const string&); //K
 
 vector<int> Assignment(); //A
 
