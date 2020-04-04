@@ -53,6 +53,18 @@ public:
     vector<int> GetEdgesFrom(int v) const{
         vector<int> res = matrix[v];
     };
+    
+    // Получение размера графа
+    int GetSize() const
+    {
+        return size;
+    };
+
+    // Получение графа
+    vector<vector<int>> GetMatrix() const
+    {
+        return matrix;
+    };
 
 private:
     vector<vector<int>> matrix;
