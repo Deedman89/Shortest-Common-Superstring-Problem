@@ -12,9 +12,11 @@ using namespace std;
 
 class Graph { // A
 public:
-    Graph(const vector<string>&);
+    Graph(const vector<string>&); // Конструктор, создающий полный граф по данному набору строк
     void AddEdge(int, int, int);
     vector<int> GetEdgesFrom(int) const;
+private:
+    vector<vector<int>> matrix;
 };
 
 int OverLap(string, string); //K
