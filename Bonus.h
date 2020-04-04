@@ -1,13 +1,18 @@
+/* 
+   Буквой A отмечены объекты, за реализацию которых отвечает Фомина Анна
+   Буквой K отмечены объекты, за реализацию которых отвечает Беркут Кирилл
+*/
+
 #include <iostream>
 #include <cstdlib>
 #include <vector>
 #include <cstdint>
 #include <string>
 
-class Graph {
+class Graph { // A
 public:
     Graph(vector<string>);
-    void AddEdge(int, int, int); //A
+    void AddEdge(int, int, int);
     GetEdgesFrom(int) const;
 };
 
