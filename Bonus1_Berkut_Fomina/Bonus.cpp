@@ -29,13 +29,15 @@ int Overlap(const string& s1, const string& s2)
         }
     }
     return overlap;
-}
+};
 
 
-class Graph { 
+class Graph
+{ 
 public:
     // Конструктор, создающий полный граф по набору строк input
-    Graph(const vector<string>& input){
+    Graph(const vector<string>& input)
+    {
         int n = input.size();
         size = n;
         matrix.resize(n); // Создаем пустую матрицу смежности размера n*n
@@ -43,29 +45,26 @@ public:
         for (int i = 0; i < n; i++) // Заполняем матрицу смежности
             for (int j = 0; j < n; j++) AddEdge(i, j, Overlap(input[i], input[j]));
     };
-
     // Добавление ребра из вершины from в вершину to с весом length
-    void AddEdge(int from, int to, int length){
+    void AddEdge(int from, int to, int length)
+    {
         matrix[from][to] = length;
     };
-
     // Получение списка ребер, исходящих из вершины v
-    vector<int> GetEdgesFrom(int v) const{
+    vector<int> GetEdgesFrom(int v) const
+    {
         vector<int> res = matrix[v];
     };
-    
     // Получение размера графа
     int GetSize() const
     {
         return size;
     };
-
     // Получение графа
     vector<vector<int>> GetMatrix() const
     {
         return matrix;
     };
-
 private:
     vector<vector<int>> matrix;
     int size; // размер матрицы
@@ -75,7 +74,8 @@ private:
 * Функция, вычисляющая полное назначение максимального
 * веса жажным методом. Время - O(k*k*log(k))
 */
-vector<int> Assignment(const Graph& g){
+vector<int> Assignment(const Graph& g)
+{
     vector<vector<int>> a = g.GetMatrix(); // Копия нашей матрицы смежности
     vector<int> res; // Массив для записи результата
     /* res[i] = j означает выбранное ребро из i в j */
@@ -91,7 +91,8 @@ vector<int> Assignment(const Graph& g){
         {
             for (int j = 0; j < n; j++)
             {
-                if (allow[i][j]) continue;
+                if (allow[i][j])
+                    continue;
                 if (a[i][j] > max)
                 {
                     max = a[i][j];
@@ -99,11 +100,8 @@ vector<int> Assignment(const Graph& g){
                 }
             }
         }
-
         if (max == -1) break;
-
         res[maxi] = maxj;
-
         for (int i = 0; i < n; i++)
         {
             allow[maxi][i] = true;
@@ -111,4 +109,38 @@ vector<int> Assignment(const Graph& g){
         }
     }
     return res;
+};
+
+//вычисление покрытия циклами минимальной полной длины, на выходе вектор векторов в которых записаны
+//вершины циклов в порядке соединения их рёбрами
+vector<vector<int>> FullCoverage(const vector<int>& a)
+{
+    vector<int> assign = a;
+    int assign_size = assign.size();
+    vector<vector<int>> cycles(assign_size); 
+    vector<bool> mark(assign_size, false); //заводим вектор отметок посещения вершин
+    int cycle = 0;
+    for (int i = 0; i < assign_size; i++) //дальше мы бегаем по вектору из входа и составляем наши циклы,
+    {                                     //отмечая уже посещённые вершины
+        if (mark[i] == false)
+        {
+            cycles[cycle].push_back(i);
+            mark[i] == true;
+            int j = assign[i];
+            while (true)
+            {
+                if (count(cycles[cycle].begin(), cycles[cycle].end(), j) == 0)
+                {
+                    cycles[cycle].push_back(j);
+                    mark[j] = true;
+                }
+                if (assign[j] == i)
+                    break;
+                int current_assign = j;
+                j = assign[current_assign];
+            }
+            cycle++;
+        }
+    }
+    return cycles; //возвращаем наш вектор векторов(циклов)
 };
