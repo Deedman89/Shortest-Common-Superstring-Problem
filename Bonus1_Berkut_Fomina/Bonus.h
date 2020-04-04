@@ -35,8 +35,8 @@ vector<int> Assignment(const Graph& g); //A
 //Функция для вычисления покрытия циклами минимальной полной длины
 vector<vector<int>> FullCoverage(vector<int>); //K
 
-string Prefix(string, int); //A
+string Prefix(string, int); //K
 
-string Minimize(Graph); //K
+string Minimize(Graph); //А+К
 
-string Builder(vector<string>); //A
+string Builder(vector<string>); //К
