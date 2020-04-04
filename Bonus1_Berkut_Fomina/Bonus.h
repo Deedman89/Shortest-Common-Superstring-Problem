@@ -1,8 +1,29 @@
-//
-// Created by kirb2 on 04.04.2020.
-//
+/* 
+   Буквой A отмечены объекты, за реализацию которых отвечает Фомина Анна
+   Буквой K отмечены объекты, за реализацию которых отвечает Беркут Кирилл
+*/
 
-#ifndef UNTITLED1_BONUS_H
-#define UNTITLED1_BONUS_H
+#include <iostream>
+#include <cstdlib>
+#include <vector>
+#include <cstdint>
+#include <string>
 
-#endif //UNTITLED1_BONUS_H
+class Graph { // A
+public:
+    Graph(vector<string>);
+    void AddEdge(int, int, int);
+    GetEdgesFrom(int) const;
+};
+
+int OverLap(string, string); //K
+
+vector<int> Assignment(); //A
+
+vector<Graph> FullCoverage(vector<int>); //K
+
+string Prefix(string, int); //A
+
+string Minimize(Graph); //K
+
+string Builder(vector<string>); //A
