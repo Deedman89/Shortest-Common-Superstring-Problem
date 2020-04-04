@@ -8,12 +8,13 @@
 #include <vector>
 #include <cstdint>
 #include <string>
+using namespace std;
 
 class Graph { // A
 public:
     Graph(vector<string>);
     void AddEdge(int, int, int);
-    GetEdgesFrom(int) const;
+    vector<int> GetEdgesFrom(int) const;
 };
 
 int OverLap(string, string); //K
