@@ -146,7 +146,7 @@ vector<vector<int>> FullCoverage(const vector<int>& a)
     return cycles; //возвращаем наш вектор векторов(циклов)
 };
 
-string Prefix(string s1, int n)
+string Prefix(const string& s1, int& n)
 {
     return s1.substr(0, s1.size() - n);
 };
