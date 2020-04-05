@@ -126,7 +126,7 @@ vector<vector<int>> FullCoverage(const vector<int>& a)
         if (mark[i] == false)
         {
             cycles[cycle].push_back(i);
-            mark[i] == true;
+            mark[i] = true;
             int j = assign[i];
             while (true)
             {
