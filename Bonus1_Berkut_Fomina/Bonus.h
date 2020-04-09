@@ -38,14 +38,14 @@ vector<vector<int>> FullCoverage(vector<int>); //K
 // Функция для обрезания первой строки на ее overlap со второй
 string Prefix(string, int); //K
 
-// Функция для сборки надстроки по одному циклу
-string Cycle(vector<int>); // A
-
 /* 
 * Функция, сдвигающая цикл так,
 * чтобы минимизировать overlap первой и последней строчек
 */
 vector<int> Minimize(vector<int>); //А+К
+
+// Функция для сборки надстроки по одному циклу
+string Cycle(vector<int>); // A
 
 // Функция для сборки всего
 /* 
