@@ -146,10 +146,22 @@ vector<vector<int>> FullCoverage(const vector<int>& a)
     return cycles; //возвращаем наш вектор векторов(циклов)
 };
 
+// Функция для обрезания первой строки на ее overlap со второй
 string Prefix(const string& s1, int n)
 {
     return s1.substr(0, s1.size() - n);
 };
+
+
+// Функция для сборки надстроки по одному циклу
+string Cycle(vector<int> v, Graph& g, vector<string> input){
+    string res = "";
+    for (int i = 0; i < input.size() - 1; i++) {
+        res += Prefix(input[i], g.GetValue(i, i+1));
+    }
+    return res+input[input.size()-1];
+};
+
 
 string Builder(const vector<string>& a)
 {
