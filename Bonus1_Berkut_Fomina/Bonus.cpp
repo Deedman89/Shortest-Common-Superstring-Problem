@@ -152,6 +152,30 @@ string Prefix(const string& s1, int n)
     return s1.substr(0, s1.size() - n);
 };
 
+/*
+* Функция, сдвигающая цикл так,
+* чтобы минимизировать overlap первой и последней строчек
+*/
+vector<int> Minimize(vector<int> v, Graph g) {
+    vector<int> res;
+    int n  = v.size();
+    int min = g.GetValue(v[0], v[n - 1]);
+    int shift = 0;
+    for (int i = 1; i < n; i++) {
+        int x = g.GetValue(v[n - i], v[n - 1 - i]);
+        if (x < min) {
+            min = x;
+            shift = i;
+        }
+    }
+    if (shift == 0) return v;
+    else {
+        res.resize(n);
+        for (int i = shift; i < n; i++) res[i] = v[i - shift + 1];
+        for (int i = 0; i < shift; i++) res[i] = v[i + n - shift];
+        return res;
+    }
+};
 
 // Функция для сборки надстроки по одному циклу
 string Cycle(vector<int> v, Graph g, vector<string> input){
