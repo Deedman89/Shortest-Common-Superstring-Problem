@@ -30,13 +30,24 @@ int OverLap(const string&, const string&); //K
 * Функция, вычисляющая полное назначение максимального
 * веса жажным методом. Время - O(k*k*log(k))
 */
-vector<int> Assignment(const Graph& g); //A
+vector<int> Assignment(const Graph&); //A
 
 //Функция для вычисления покрытия циклами минимальной полной длины
 vector<vector<int>> FullCoverage(vector<int>); //K
 
+// Функция для обрезания первой строки на ее overlap со второй
 string Prefix(string, int); //K
 
-string Minimize(Graph); //А+К
+// Функция для сборки надстроки по одному циклу
+string Cycle(vector<int>); // A
 
-string Builder(vector<string>); //К
+/* Функция, сдвигающая цикл так,
+*  чтобы минимизировать overlap первой и последней строчек
+*/
+vector<int> Minimize(vector<int>); //А+К
+
+// Функция для сборки всего
+/* Тут надо сдвинуть все циклы, сделать для каждого надстроку 
+* и собрать все в 1 надстроку
+*/
+string Builder(vector<vector<int>>); //К
