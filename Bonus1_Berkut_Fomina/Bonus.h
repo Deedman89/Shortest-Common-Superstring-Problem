@@ -33,10 +33,10 @@ int OverLap(const string&, const string&); //K
 vector<int> Assignment(const Graph&); //A
 
 //Функция для вычисления покрытия циклами минимальной полной длины
-vector<vector<int>> FullCoverage(vector<int>); //K
+vector<vector<int>> FullCoverage(const vector<int>&); //K
 
 // Функция для обрезания первой строки на ее overlap со второй
-string Prefix(string, int); //K
+string Prefix(const string&, int); //K
 
 /* 
 * Функция, сдвигающая цикл так,
@@ -52,4 +52,4 @@ string Cycle(vector<int>, Graph, vector<string>); // A
 * Тут надо сдвинуть все циклы, сделать для каждого надстроку 
 * и собрать все в 1 надстроку
 */
-string Builder(vector<vector<int>>, const Graph&); //К
+string Builder(const vector<vector<int>>&, Graph&, const vector<string>&); //К
