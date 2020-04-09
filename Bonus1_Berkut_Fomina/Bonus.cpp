@@ -154,7 +154,7 @@ string Prefix(const string& s1, int n)
 
 
 // Функция для сборки надстроки по одному циклу
-string Cycle(vector<int> v, Graph& g, vector<string> input){
+string Cycle(vector<int> v, Graph g, vector<string> input){
     string res = "";
     for (int i = 0; i < input.size() - 1; i++) {
         res += Prefix(input[i], g.GetValue(i, i+1));
