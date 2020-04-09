@@ -45,7 +45,7 @@ string Prefix(string, int); //K
 vector<int> Minimize(vector<int>, const Graph&); //А+К
 
 // Функция для сборки надстроки по одному циклу
-string Cycle(vector<int>, const Graph&); // A
+string Cycle(vector<int>, const Graph&, const vector<string>&); // A
 
 // Функция для сборки всего
 /* 
