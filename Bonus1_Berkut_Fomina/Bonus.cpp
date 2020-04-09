@@ -2,6 +2,8 @@
 #include <vector>
 #include <string>
 #include <algorithm>
+#include <cstdint>
+#include <cstdlib>
 #include "Bonus.h"
 
 using namespace std;
@@ -186,7 +188,7 @@ string Cycle(vector<int> v, Graph g, vector<string> input){
     return res+input[input.size()-1];
 };
 
-
+// Функция для сборки всех минимальных надстрок сдвинутых циклов
 string Builder(const vector<vector<int>>& cycles, Graph& graph, const vector<string>& input)
 {
     string result;
