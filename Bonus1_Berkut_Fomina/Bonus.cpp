@@ -187,10 +187,16 @@ string Cycle(vector<int> v, Graph g, vector<string> input){
 };
 
 
-string Builder(const vector<string>& a)
+string Builder(const vector<vector<int>>& cycles, Graph& graph, const vector<string>& input)
 {
-    string res;
-    for (auto i: a)
-        res += i;
-    return res;
+    string result;
+    for (auto cycle: cycles)
+    {
+        vector<int> minimized_cycle;
+        string nadstroka;
+        minimized_cycle = Minimize(cycle, graph);
+        nadstroka = Cycle(minimized_cycle, graph, input);
+        result += nadstroka;
+    }
+    return result;
 };
