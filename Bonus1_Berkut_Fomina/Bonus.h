@@ -42,10 +42,10 @@ string Prefix(string, int); //K
 * Функция, сдвигающая цикл так,
 * чтобы минимизировать overlap первой и последней строчек
 */
-vector<int> Minimize(vector<int>, const Graph&); //А+К
+vector<int> Minimize(vector<int>, Graph); //А+К
 
 // Функция для сборки надстроки по одному циклу
-string Cycle(vector<int>, Graph, vector<string>&); // A
+string Cycle(vector<int>, Graph, vector<string>); // A
 
 // Функция для сборки всего
 /* 
