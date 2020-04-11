@@ -10,9 +10,10 @@
 using namespace std;
 
 // Функция, удаляющая одинаовые строки
-vector<string> DeleteSameStrings(set<string>& input) {
+vector<string> DeleteSameStrings(set<string>& input)
+{
     vector<string> res;
-    for (auto i : input)
+    for (auto i: input)
         res.push_back(i);
     return res;
 };
@@ -53,9 +54,11 @@ public:
         size = n;
         matrix.resize(n); // Создаем пустую матрицу смежности размера n*n
         for (int i = 0; i < n; i++) // Заполняем матрицу смежности
-            for (int j = 0; j < n; j++) matrix[i].push_back(Overlap(input[i], input[j]));
+        {
+            for (int j = 0; j < n; j++)
+                matrix[i].push_back(Overlap(input[i], input[j]));
+        }    
     };
-
     // Получение размера графа
     int GetSize() const
     {
@@ -66,16 +69,16 @@ public:
     {
         return matrix;
     };
-
     // Получение значения ячейки [i][j]
     int GetValue(int i, int j)
     {
         return matrix[i][j];
     };
-
     // Печать графа
-    void Print() {
-        for (int i = 0; i < size; i++) {
+    void Print()
+    {
+        for (int i = 0; i < size; i++)
+        {
             for (int j = 0; j < size; j++)
                 cout << matrix[i][j] << " ";
             cout << endl;
@@ -100,7 +103,8 @@ vector<int> Assignment(const Graph& g)
     res.resize(n);
     vector<vector<bool>> allow;
     allow.resize(n);
-    for (int i = 0; i < n; i++) allow[i].assign(n, false); // Заполнили матрицу достуных клеток
+    for (int i = 0; i < n; i++)
+        allow[i].assign(n, false); // Заполнили матрицу достуных клеток
     while (true)
     {
         int max = -1, maxi = -1, maxj = -1;
@@ -172,20 +176,24 @@ string Prefix(const string& s1, int n)
 * Функция, сдвигающая цикл так,
 * чтобы минимизировать overlap первой и последней строчек
 */
-vector<int> Minimize(vector<int> v, Graph& g) {
+vector<int> Minimize(vector<int> v, Graph& g)
+{
     vector<int> res;
     int n  = v.size();
     int min = g.GetValue(v[n-1], v[0]);
     int shift = 0;
-    for (int i = 1; i < n; i++) {
+    for (int i = 1; i < n; i++)
+    {
         int x = g.GetValue(v[n - i - 1], v[n - i]);
-        if (x < min) {
+        if (x < min)
+        {
             min = x;
             shift = i;
         }
     }
     if (shift == 0) return v;
-    else {
+    else
+    {
         res.resize(n);
         for (int i = shift; i < n; i++) res[i] = v[i - shift];
         for (int i = 0; i < shift; i++) res[i] = v[i + n - shift];
@@ -194,12 +202,14 @@ vector<int> Minimize(vector<int> v, Graph& g) {
 };
 
 // Функция для сборки надстроки по одному циклу
-string Cycle(vector<int> v, Graph g, vector<string> input){
+string Cycle(vector<int> v, Graph g, vector<string> input)
+{
     string res = "";
-    for (int i = 0; i < v.size() - 1; i++) {
+    for (int i = 0; i < v.size() - 1; i++)
+    {
         res += Prefix(input[v[i]], g.GetValue(v[i], v[i+1]));
     }
-    return res+input[v[v.size()-1]];
+    return res + input[v[v.size()-1]];
 };
 
 
