@@ -6,13 +6,21 @@
 #include <cstdint>
 #include <algorithm>
 #include <set>
+#include "bonus.h"
 using namespace std;
 
 int main() {
-    int number_strings = 4;
-    //cin >> number_strings; // считаем кол-во строк
-    //vector<string> input = {"cde", "abc", "eab", "fgh", "ghf", "hed"};
-    vector<string> input = {"abba", "aca", "bac", "aa"};
+    int number_strings;
+    cin >> number_strings; // считаем кол-во строк
+    set<string> input0;
+    for (int i = 0; i < n; i++)
+    {
+        string stroka;
+        cin >> stroka;
+        input0.insert(stroka);
+    }   
+    vector<string> input;
+    input = DeleteSameStrings(input0);
 
     // Протестируем функцию Overlap и создание графа
     Graph graph(input);
@@ -27,27 +35,25 @@ int main() {
     vector<vector<int>> full_coverage;
     full_coverage = FullCoverage(assign);
     /*
-     * for (auto i : full_coverage) {
+        for (auto i : full_coverage) {
         for (auto j : i) cout << j << " ";
-        cout << endl;
-       }
+        cout << endl;}
      */
 
     // Протестируем функцию
-    vector<int> cycl;
+    /*vector<int> cycl;
     cycl = Minimize({1, 0, 2}, graph);
-    //for (auto i : cycl) cout << i << " ";
+    for (auto i : cycl) cout << i << " ";*/
 
     // Протестируем функцию Cycle
-    string s;
+    /*string s;
     s = Cycle({2, 1, 0}, graph, input);
-    //cout << s;
+    cout << s;*/
 
     // Протестируем Builder
     string res;
     res = Builder(full_coverage, graph, input);
     cout << res;
-
 
     return 0;
 }
