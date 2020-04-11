@@ -10,6 +10,7 @@
 #include <string>
 #include <algorithm>
 #include <set>
+
 using namespace std;
 
 // Функция, удаляющая одинаовые строки
@@ -18,8 +19,6 @@ vector<string> DeleteSameStrings(set<string>&); // K
 class Graph { // A
 public:
     Graph(const vector<string>&); // Конструктор, создающий полный граф по данному набору строк
-    void AddEdge(int, int, int); // Добавление ребра из вершины from в вершину to с весом length
-    vector<int> GetEdgesFrom(int) const; // Получение списка ребер, исходящих из вершины v
     int GetSize() const; // Получение размера графа
     vector<vector<int>> GetMatrix() const; // Получение графа
     int GetValue(int i, int j); // Получение значения ячейки [i][j]
@@ -48,7 +47,7 @@ string Prefix(const string&, int); //K
 * Функция, сдвигающая цикл так,
 * чтобы минимизировать overlap первой и последней строчек
 */
-vector<int> Minimize(vector<int>, Graph); //А+К
+vector<int> Minimize(vector<int>, Graph&); //А+К
 
 // Функция для сборки надстроки по одному циклу
 string Cycle(vector<int>, Graph, vector<string>); // A
