@@ -13,7 +13,7 @@ int main() {
     int number_strings;
     cin >> number_strings; // считаем кол-во строк
     set<string> input0;
-    for (int i = 0; i < n; i++)
+    for (int i = 0; i < number_strings; i++)
     {
         string stroka;
         cin >> stroka;
