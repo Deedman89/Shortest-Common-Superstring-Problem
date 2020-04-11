@@ -9,7 +9,11 @@
 #include <cstdint>
 #include <string>
 #include <algorithm>
+#include <set>
 using namespace std;
+
+// Функция, удаляющая одинаовые строки
+vector<string> DeleteSameStrings(set<string>&); // K
 
 class Graph { // A
 public:
