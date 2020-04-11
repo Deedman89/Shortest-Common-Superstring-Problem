@@ -22,6 +22,8 @@ public:
     vector<int> GetEdgesFrom(int) const; // Получение списка ребер, исходящих из вершины v
     int GetSize() const; // Получение размера графа
     vector<vector<int>> GetMatrix() const; // Получение графа
+    int GetValue(int i, int j); // Получение значения ячейки [i][j]
+    void Print(); // Печать графа
 private:
     vector<vector<int>> matrix;
     int size; // число вершин графа
