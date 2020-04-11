@@ -78,6 +78,13 @@ public:
         return matrix;
     };
     
+    // Получение значения ячейки [i][j]
+    int GetValue(int i, int j)
+    {
+        if (i >= 0 && i < matrix.size() && j >= 0 && j < matrix[0].size())
+            return matrix[i][j];
+    };
+    
     // Печать графа
     void Print() {
         for (int i = 0; i < size; i++) {
