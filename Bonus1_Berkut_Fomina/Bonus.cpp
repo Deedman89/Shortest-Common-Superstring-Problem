@@ -173,7 +173,7 @@ string Prefix(const string& s1, int n)
 * Функция, сдвигающая цикл так,
 * чтобы минимизировать overlap первой и последней строчек
 */
-vector<int> Minimize(vector<int> v, Graph g) {
+vector<int> Minimize(vector<int>& v, Graph& g) {
     vector<int> res;
     int n  = v.size();
     int min = g.GetValue(v[0], v[n - 1]);
