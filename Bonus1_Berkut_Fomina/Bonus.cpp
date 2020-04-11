@@ -77,6 +77,16 @@ public:
     {
         return matrix;
     };
+    
+    // Печать графа
+    void Print() {
+        for (int i = 0; i < size; i++) {
+            for (int j = 0; j < size; j++)
+                cout << matrix[i][j] << " ";
+            cout << endl;
+        }
+
+    };
 private:
     vector<vector<int>> matrix;
     int size; // размер матрицы
