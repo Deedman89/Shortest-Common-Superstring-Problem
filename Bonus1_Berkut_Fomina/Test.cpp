@@ -6,7 +6,7 @@
 #include <cstdint>
 #include <algorithm>
 #include <set>
-#include "bonus.h"
+#include "Bonus.h"
 using namespace std;
 
 int main() {
