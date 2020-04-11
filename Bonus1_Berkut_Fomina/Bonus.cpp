@@ -4,9 +4,18 @@
 #include <algorithm>
 #include <cstdint>
 #include <cstdlib>
+#include <set>
 #include "Bonus.h"
 
 using namespace std;
+
+// Функция, удаляющая одинаовые строки
+vector<string> DeleteSameStrings(set<string>& input) {
+    vector<string> res;
+    for (auto i : input)
+        res.push_back(i);
+    return res;
+};
 
 // Функция, считающая длину максимальной одинаковой подстроки данных на вход строк
 int Overlap(const string& s1, const string& s2)  
