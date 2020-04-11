@@ -53,7 +53,6 @@ public:
         int n = input.size();
         size = n;
         matrix.resize(n); // Создаем пустую матрицу смежности размера n*n
-        for (auto i : matrix) i.resize(n);
         for (int i = 0; i < n; i++) // Заполняем матрицу смежности
             for (int j = 0; j < n; j++) matrix[i].push_back(Overlap(input[i], input[j]));
     };
