@@ -43,9 +43,8 @@ int Overlap(const string& s1, const string& s2)
     return overlap;
 };
 
-
 class Graph
-{ 
+{
 public:
     // Конструктор, создающий полный граф по набору строк input
     Graph(const vector<string>& input)
@@ -56,6 +55,7 @@ public:
         for (int i = 0; i < n; i++) // Заполняем матрицу смежности
             for (int j = 0; j < n; j++) matrix[i].push_back(Overlap(input[i], input[j]));
     };
+
     // Получение размера графа
     int GetSize() const
     {
@@ -66,14 +66,13 @@ public:
     {
         return matrix;
     };
-    
+
     // Получение значения ячейки [i][j]
     int GetValue(int i, int j)
     {
-        if (i >= 0 && i < matrix.size() && j >= 0 && j < matrix[0].size())
-            return matrix[i][j];
+        return matrix[i][j];
     };
-    
+
     // Печать графа
     void Print() {
         for (int i = 0; i < size; i++) {
@@ -101,7 +100,7 @@ vector<int> Assignment(const Graph& g)
     res.resize(n);
     vector<vector<bool>> allow;
     allow.resize(n);
-    for (auto i : allow) i.assign(n, true); // Заполнили матрицу достуных клеток
+    for (int i = 0; i < n; i++) allow[i].assign(n, false); // Заполнили матрицу достуных клеток
     while (true)
     {
         int max = -1, maxi = -1, maxj = -1;
@@ -135,7 +134,7 @@ vector<vector<int>> FullCoverage(const vector<int>& a)
 {
     vector<int> assign = a;
     int assign_size = assign.size();
-    vector<vector<int>> cycles(assign_size); 
+    vector<vector<int>> cycles(assign_size);
     vector<bool> mark(assign_size, false); //заводим вектор отметок посещения вершин
     int cycle = 0;
     for (int i = 0; i < assign_size; i++) //дальше мы бегаем по вектору из входа и составляем наши циклы,
@@ -173,13 +172,13 @@ string Prefix(const string& s1, int n)
 * Функция, сдвигающая цикл так,
 * чтобы минимизировать overlap первой и последней строчек
 */
-vector<int> Minimize(vector<int>& v, Graph& g) {
+vector<int> Minimize(vector<int> v, Graph& g) {
     vector<int> res;
     int n  = v.size();
-    int min = g.GetValue(v[0], v[n - 1]);
+    int min = g.GetValue(v[n-1], v[0]);
     int shift = 0;
     for (int i = 1; i < n; i++) {
-        int x = g.GetValue(v[n - i], v[n - 1 - i]);
+        int x = g.GetValue(v[n - i - 1], v[n - i]);
         if (x < min) {
             min = x;
             shift = i;
@@ -188,7 +187,7 @@ vector<int> Minimize(vector<int>& v, Graph& g) {
     if (shift == 0) return v;
     else {
         res.resize(n);
-        for (int i = shift; i < n; i++) res[i] = v[i - shift + 1];
+        for (int i = shift; i < n; i++) res[i] = v[i - shift];
         for (int i = 0; i < shift; i++) res[i] = v[i + n - shift];
         return res;
     }
@@ -197,23 +196,27 @@ vector<int> Minimize(vector<int>& v, Graph& g) {
 // Функция для сборки надстроки по одному циклу
 string Cycle(vector<int> v, Graph g, vector<string> input){
     string res = "";
-    for (int i = 0; i < input.size() - 1; i++) {
-        res += Prefix(input[i], g.GetValue(i, i+1));
+    for (int i = 0; i < v.size() - 1; i++) {
+        res += Prefix(input[v[i]], g.GetValue(v[i], v[i+1]));
     }
-    return res+input[input.size()-1];
+    return res+input[v[v.size()-1]];
 };
+
 
 // Функция для сборки всех минимальных надстрок сдвинутых циклов
 string Builder(const vector<vector<int>>& cycles, Graph& graph, const vector<string>& input)
 {
     string result;
-    for (auto cycle: cycles)
+    for (int i = 0; i < cycles.size(); i++)
     {
-        vector<int> minimized_cycle;
-        string nadstroka;
-        minimized_cycle = Minimize(cycle, graph);
-        nadstroka = Cycle(minimized_cycle, graph, input);
-        result += nadstroka;
+        if (cycles[i].size() > 0) {
+            vector<int> minimized_cycle;
+            string nadstroka;
+            minimized_cycle = Minimize(cycles[i], graph);
+            nadstroka = Cycle(minimized_cycle, graph, input);
+            result += nadstroka;
+        }
     }
     return result;
 };
+
