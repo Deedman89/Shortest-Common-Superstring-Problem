@@ -1,0 +1,3 @@
+all:
+    g++ Test.cpp Bonus.cpp Bonus.h -o Bonus
+  
