@@ -5,4 +5,4 @@ branches:
     - master
  
  script:
- make -f MakeFile && ./Bonus
+  make -f MakeFile && ./Bonus
