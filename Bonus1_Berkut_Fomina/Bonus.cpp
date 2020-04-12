@@ -45,7 +45,7 @@ int Overlap(const string& s1, const string& s2)
 };
 
 // Конструктор, создающий полный граф по набору строк input
-Graph(const vector<string>& input)
+Graph::Graph(const vector<string>& input)
 {
     int n = input.size();
     size = n;
@@ -58,25 +58,25 @@ Graph(const vector<string>& input)
 };
 
 // Получение размера графа
-int GetSize() const
+Graph::int GetSize() const
 {
     return size;
 };
 
 // Получение графа
-vector<vector<int>> GetMatrix() const
+Graph::vector<vector<int>> GetMatrix() const
 {
     return matrix;
 };
 
 // Получение значения ячейки [i][j]
-int GetValue(int i, int j)
+Graph::int GetValue(int i, int j)
 {
     return matrix[i][j];
 };
 
 // Печать графа
-void Print()
+Graph::void Print()
 {
     for (int i = 0; i < size; i++)
     {
