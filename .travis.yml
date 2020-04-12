@@ -1,0 +1,8 @@
+language: c++
+
+branches:
+  only:
+    - master
+ 
+ script:
+  make -f MakeFile && ./Bonus
