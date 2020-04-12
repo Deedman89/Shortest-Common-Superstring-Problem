@@ -5,4 +5,4 @@ branches:
     - master
  
  script:
- make Test.cpp && ./Test.cpp
+ make -f MakeFile && ./Bonus
