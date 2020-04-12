@@ -1,11 +1,11 @@
 language: c++
 os: linux
-  addons:
-    apt:
-      sources:
-        - ubuntu-toolchain-r-test
-      packages:
-        - g++-7
+    addons:
+      apt:
+        sources:
+          - ubuntu-toolchain-r-test
+        packages:
+          - g++-7
 branches:
   only:
     - master
