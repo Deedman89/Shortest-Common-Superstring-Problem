@@ -44,50 +44,46 @@ int Overlap(const string& s1, const string& s2)
     return overlap;
 };
 
-class Graph
+// Конструктор, создающий полный граф по набору строк input
+Graph(const vector<string>& input)
 {
-public:
-    // Конструктор, создающий полный граф по набору строк input
-    Graph(const vector<string>& input)
+    int n = input.size();
+    size = n;
+    matrix.resize(n); // Создаем пустую матрицу смежности размера n*n
+    for (int i = 0; i < n; i++) // Заполняем матрицу смежности
     {
-        int n = input.size();
-        size = n;
-        matrix.resize(n); // Создаем пустую матрицу смежности размера n*n
-        for (int i = 0; i < n; i++) // Заполняем матрицу смежности
-        {
-            for (int j = 0; j < n; j++)
-                matrix[i].push_back(Overlap(input[i], input[j]));
-        }    
-    };
-    // Получение размера графа
-    int GetSize() const
-    {
-        return size;
-    };
-    // Получение графа
-    vector<vector<int>> GetMatrix() const
-    {
-        return matrix;
-    };
-    // Получение значения ячейки [i][j]
-    int GetValue(int i, int j)
-    {
-        return matrix[i][j];
-    };
-    // Печать графа
-    void Print()
-    {
-        for (int i = 0; i < size; i++)
-        {
-            for (int j = 0; j < size; j++)
-                cout << matrix[i][j] << " ";
-            cout << endl;
-        }
+        for (int j = 0; j < n; j++)
+            matrix[i].push_back(Overlap(input[i], input[j]));
+    }    
+};
 
-    };
-private:
-    vector<vector<int>> matrix;
-    int size; // размер матрицы
+// Получение размера графа
+int GetSize() const
+{
+    return size;
+};
+
+// Получение графа
+vector<vector<int>> GetMatrix() const
+{
+    return matrix;
+};
+
+// Получение значения ячейки [i][j]
+int GetValue(int i, int j)
+{
+    return matrix[i][j];
+};
+
+// Печать графа
+void Print()
+{
+    for (int i = 0; i < size; i++)
+    {
+        for (int j = 0; j < size; j++)
+            cout << matrix[i][j] << " ";
+        cout << endl;
+    }
 };
 
 /*
