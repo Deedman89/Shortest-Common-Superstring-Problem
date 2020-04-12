@@ -1,13 +1,13 @@
 language: c++
 os: linux
-    addons:
-        apt:
-            sources:
-                - ubuntu-toolchain-r-test
-            packages:
-                - g++-7
+addons:
+apt:
+sources:
+  - ubuntu-toolchain-r-test
+packages:
+  - g++-7
 branches:
-    only:
-        - master
+  only:
+    - master
 script:
-    cd Bonus1_Berkut_Fomina/ && make -f MakeFile && ./Bonus
+  cd Bonus1_Berkut_Fomina/ && make -f MakeFile && ./Bonus
