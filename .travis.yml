@@ -1,4 +1,5 @@
 language: c++
+c++: -std=c++11
 branches:
   only:
     - master
