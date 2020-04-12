@@ -58,25 +58,25 @@ Graph::Graph(const vector<string>& input)
 };
 
 // Получение размера графа
-Graph::int GetSize() const
+int Graph::GetSize() const
 {
     return size;
 };
 
 // Получение графа
-Graph::vector<vector<int>> GetMatrix() const
+vector<vector<int>> Graph::GetMatrix() const
 {
     return matrix;
 };
 
 // Получение значения ячейки [i][j]
-Graph::int GetValue(int i, int j)
+int Graph::GetValue(int i, int j)
 {
     return matrix[i][j];
 };
 
 // Печать графа
-Graph::void Print()
+void Graph::Print()
 {
     for (int i = 0; i < size; i++)
     {
