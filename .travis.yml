@@ -1,13 +1,36 @@
 language: c++
-os: linux
-  addons:
-    apt:
-      sources:
-        - ubuntu-toolchain-r-test
-      packages:
-        - g++-7
-branches:
-  only:
-    - master
-script:
-  cd Bonus1_Berkut_Fomina/ && make -f MakeFile && ./Bonus
+matrix:
+  include:
+    - os: linux
+      addons:
+        apt:
+          sources:
+            - ubuntu-toolchain-r-test
+          packages:
+            - g++-7
+      env:
+        - CXX=g++-7
+    - os: linux
+      addons:
+        apt:
+          sources:
+            - ubuntu-toolchain-r-test
+          packages:
+            - g++-8
+      env:
+        - CXX=g++-8
+        
+before_install:
+ - sudo apt-get -qq update
+ - sudo apt-get install -y libgtest-dev valgrind cmake
+ - sudo wget https://github.com/google/googletest/archive/release-1.7.0.tar.gz
+ - sudo tar xf release-1.7.0.tar.gz
+ - cd googletest-release-1.7.0
+ - sudo cmake -DBUILD_SHARED_LIBS=ON .
+ - sudo make
+ - sudo cp -a include/gtest /usr/include
+ - sudo cp -a libgtest_main.so libgtest.so /usr/lib/
+ - cd "${TRAVIS_BUILD_DIR}"
+before_script:
+  - cd Bonus1_Berkut_Fomina/ && cmake . && make runTests
+script: ./runTests
