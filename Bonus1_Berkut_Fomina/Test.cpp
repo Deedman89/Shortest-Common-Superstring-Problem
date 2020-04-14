@@ -7,53 +7,38 @@
 #include <algorithm>
 #include <set>
 #include "Bonus.h"
+#include "Bonus.cpp"
 using namespace std;
 
-int main() {
-    int number_strings;
-    cin >> number_strings; // считаем кол-во строк
-    set<string> input0;
-    for (int i = 0; i < number_strings; i++)
-    {
-        string stroka;
-        cin >> stroka;
-        input0.insert(stroka);
-    }   
-    vector<string> input;
-    input = DeleteSameStrings(input0);
+/*
+* Здесь мы протестируем последовательно работу
+* всех функций на примерах 3х наборов строк
+*/
 
-    // Протестируем функцию Overlap и создание графа
-    Graph graph(input);
-    //graph.Print();
+// Набор 1
+set<string> set_1 = {"abc", "cde", "eab", "fgh", "ghf", "hed"};
+vector<vector<int>> graph = {{0,1,0,0,0,0}, {0,0,1,0,0,0}, {2,0,0,0,0,0}, {0,0,0,0,2,1}, {0,0,0,1,0,0}, {0,0,0,0,0,0}};
+vector<int> assign = {1, 2, 0, 4, 3, 5};
+vector<vector<int>> full_coverage = {{0,1,2}, {3,4}, {5}};
+string output = "eabcdefghfhed";
+TEST (all_functions, set1) {
+    Graph G = Graph(set_1);
+    ASSERT_EQ(graph, G.GetMatrix);
+    ASSERT_EQ(assign, Assignment(G));
+    ASSERT_EQ(full_coverage, FullCoverage(assign));
+    ASSERT_EQ(output, Builder(full_coverage, G, DeleteSameStrings(set_1)));
+}
 
-    // Протестируем функцию Assignment
-    vector<int> assign;
-    assign = Assignment(graph);
-    //for (auto i : assign) cout << i << " ";
-
-    // Протестируем функцию FullCoverage
-    vector<vector<int>> full_coverage;
-    full_coverage = FullCoverage(assign);
-    /*
-        for (auto i : full_coverage) {
-        for (auto j : i) cout << j << " ";
-        cout << endl;}
-     */
-
-    // Протестируем функцию
-    /*vector<int> cycl;
-    cycl = Minimize({1, 0, 2}, graph);
-    for (auto i : cycl) cout << i << " ";*/
-
-    // Протестируем функцию Cycle
-    /*string s;
-    s = Cycle({2, 1, 0}, graph, input);
-    cout << s;*/
-
-    // Протестируем Builder
-    string res;
-    res = Builder(full_coverage, graph, input);
-    cout << res;
-
-    return 0;
+// Набор 2
+set<string> set_2 = {"aa", "abba", "aca", "bac"};
+graph = {{0,1,1,0}, {1,0,1,2}, {1,1,0,0}, {0,0,2,0}};
+assign = {1, 3, 0, 2};
+full_coverage = {{0,1,3,2}};
+output = "aabbaca";
+TEST (all_functions, set2) {
+    Graph G = Graph(set_2);
+    ASSERT_EQ(graph, G.GetMatrix);
+    ASSERT_EQ(assign, Assignment(G));
+    ASSERT_EQ(full_coverage, FullCoverage(assign));
+    ASSERT_EQ(output, Builder(full_coverage, G, DeleteSameStrings(set_2)));
 }
