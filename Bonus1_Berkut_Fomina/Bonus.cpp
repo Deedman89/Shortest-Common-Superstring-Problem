@@ -19,12 +19,11 @@ vector<string> DeleteSameStrings(set<string>& input)
 };
 
 // Блок ф-ий, считающих длину максимальной одинаковой подстроки данных на вход строк
-vector<int> prefixFunction(string s)
-{
+vector<int> prefixFunction(string s, int size) {
     vector<int> p(s.size());
-    p[0] = 0;
-    for (int i = 1; i < s.size(); i++)
-    {
+    for (int i = 0; i <= size; i++)
+        p[i] = 0;
+    for (int i = size + 1; i < s.size(); i++) {
         int k = p[i - 1];
         while (k > 0 && s[i] != s[k])
             k = p[k - 1];
@@ -33,13 +32,13 @@ vector<int> prefixFunction(string s)
         p[i] = k;
     }
     return p;
-};
+}
 
 int Overlap(string s1, string s2)
 {
     if (s1 == s2)
         return 0;
-    vector<int> res = prefixFunction(s2 + "#" + s1);
+    vector<int> res = prefixFunction(s2 + "#" + s1, s2.size());
     return res.back();
 };
 
