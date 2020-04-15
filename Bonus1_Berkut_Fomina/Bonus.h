@@ -29,7 +29,11 @@ private:
 };
 
 // Функция, считающая длину максимальной одинаковой подстроки данных на вход строк
-int OverLap(const string&, const string&);  //K
+vector<int> prefixFunction(string);
+
+vector<int> kmp(string, string);
+
+int OverLap(string, string);  //K
 
 /*
 * Функция, вычисляющая полное назначение максимального
