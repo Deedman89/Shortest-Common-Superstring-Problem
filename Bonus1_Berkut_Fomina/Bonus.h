@@ -31,8 +31,6 @@ private:
 // Функция, считающая длину максимальной одинаковой подстроки данных на вход строк
 vector<int> prefixFunction(string);
 
-vector<int> kmp(string, string);
-
 int OverLap(string, string);  //K
 
 /*
