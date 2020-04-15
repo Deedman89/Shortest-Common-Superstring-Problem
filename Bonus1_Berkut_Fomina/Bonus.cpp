@@ -35,40 +35,12 @@ vector<int> prefixFunction(string s)
     return p;
 };
 
-vector<int> kmp(string P, string T)
-{
-    int pl = P.size();
-    int tl = T.size();
-    vector<int> answer(T.size(), -1);
-    vector<int> p = prefixFunction(P + "#" + T);
-    int count = 0;
-    for (int i = 0; i < tl; i++)
-    {
-        if (p[pl + i + 1] == pl)
-        {
-            count++;
-            answer[count] = i;
-            break;
-        }
-    }
-    return answer;
-};
-
 int Overlap(string s1, string s2)
 {
     if (s1 == s2)
         return 0;
-    string s3 = "";
-    int max_overlap = 0;
-    int s1_size = s1.size() - 1;
-    for (int i = s1_size; i > -1; i--)
-    {
-        s3 = s1[i] + s3;
-        vector<int> a = kmp(s3, s2);
-        if (count(a.begin(), a.end(), (s3.size() - 1)) != 0)
-            max_overlap = s3.size();
-    }
-    return max_overlap;
+    vector<int> res = prefixFunction(s2 + "#" + s1);
+    return res.back();
 };
 
 // Конструктор, создающий полный граф по набору строк input
