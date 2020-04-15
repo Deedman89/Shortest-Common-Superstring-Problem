@@ -18,30 +18,54 @@ vector<string> DeleteSameStrings(set<string>& input)
     return res;
 };
 
-// Функция, считающая длину максимальной одинаковой подстроки данных на вход строк
-int Overlap(const string& s1, const string& s2)  
+// Блок ф-ий, считающих длину максимальной одинаковой подстроки данных на вход строк
+vector<int> prefixFunction(string s)
 {
-    int overlap = 0;
-    int j = 0;
-    int s1_size = s1.size() - 1;
-    int s2_size = s2.size();
-    for (int i = s1_size; i > -1; i--)  //Считаем максимальню длину суффикса s1 совпадающего с префиксом s2
+    vector<int> p(s.size());
+    p[0] = 0;
+    for (int i = 1; i < s.size(); i++)
     {
-        j++;
-        for (j; j < s2_size; j++)
+        int k = p[i - 1];
+        while (k > 0 && s[i] != s[k])
+            k = p[k - 1];
+        if (s[i] == s[k])
+            k++;
+        p[i] = k;
+    }
+    return p;
+};
+
+vector<int> kmp(string P, string T)
+{
+    int pl = P.size();
+    int tl = T.size();
+    vector<int> answer(T.size(), -1);
+    vector<int> p = prefixFunction(P + "#" + T);
+    int count = 0;
+    for (int i = 0; i < tl; i++)
+    {
+        if (p[pl + i + 1] == pl)
         {
-            string prefix = s1.substr(i);
-            string sufix = s2.substr(0, j);
-            if (prefix == sufix)
-            {
-                overlap = j;
-                break;
-            }
-            else
-                break;
+            count++;
+            answer[count] = i;
         }
     }
-    return overlap;
+    return answer;
+};
+
+int Overlap(string s1, string s2)
+{
+    string s3 = "";
+    int max_overlap = 0;
+    int s1_size = s1.size() - 1;
+    for (int i = s1_size; i > -1; i--)
+    {
+        s3 = s1[i] + s3;
+        vector<int> a = kmp(s3, s2);
+        if (count(a.begin(), a.end(), (s3.size() - 1)) != 0)
+            max_overlap = s3.size();
+    }
+    return max_overlap;
 };
 
 // Конструктор, создающий полный граф по набору строк input
