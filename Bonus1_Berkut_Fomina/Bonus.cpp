@@ -48,6 +48,7 @@ vector<int> kmp(string P, string T)
         {
             count++;
             answer[count] = i;
+            break;
         }
     }
     return answer;
