@@ -34,10 +34,10 @@ TEST(all_functions, set1) {
 // Набор 2
 
 set<string> set_2 = {"aa", "abba", "aca", "bac"};
-vector<vector<int>> graph_2 = {{1,1,1,0}, {1,1,1,2}, {1,1,1,0}, {0,0,2,0}};
-vector<int> assign_2 = {0, 3, 1, 2};
-vector<vector<int>> full_coverage_2 = {{0}, {1,3,2}, {}, {}};
-string output_2 = "aaabbaca";
+vector<vector<int>> graph_2 = {{0,1,1,0}, {1,0,1,2}, {1,1,0,0}, {0,0,2,0}};
+vector<int> assign_2 = {1, 3, 0, 2};
+vector<vector<int>> full_coverage_2 = {{0,1,3,2}, {}, {}, {}};
+string output_2 = "aabbaca";
 TEST (all_functions, set2) {
     Graph G = Graph(DeleteSameStrings(set_2));
     ASSERT_EQ(graph_2, G.GetMatrix());
