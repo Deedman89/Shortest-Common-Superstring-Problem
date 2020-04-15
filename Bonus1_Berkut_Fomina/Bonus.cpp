@@ -55,6 +55,8 @@ vector<int> kmp(string P, string T)
 
 int Overlap(string s1, string s2)
 {
+    if (s1 == s2)
+        return 0;
     string s3 = "";
     int max_overlap = 0;
     int s1_size = s1.size() - 1;
