@@ -1,2 +1,4 @@
-# Bonus1_Berkut_Fomina
-Проблема кратчайшей общей надстроки, реализация алгоритма Блюма-Янга-Ли-Тромпа-Яннакакиса.
+# Shortest-Common-Superstring-Problem
+Implementation of the Blum-Young-Lee-Tromp-Yannakakis algorithm.
+
+Authors: Berkut Kirill, Fomina Anna
